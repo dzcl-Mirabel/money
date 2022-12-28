@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>任小乐的奖金发放</title>
+	</head>
+	<body>
+		<div><span>请输入利润:</span> <input id="lr" type="text"><input type="button" id="sub_btn" value="计算"></div>
+		<p>计算结果：</p><p id="result"></p>
+	</body>
+	<script>
+		var sb_btn = document.getElementById("sub_btn");
+		sb_btn.onclick = function(){
+			var num = document.getElementById("lr").value;
+			jisuan(num);
+		}
+		
+		function jisuan(val){
+			var tc= 0 ;
+			var result_p = document.getElementById("result");
+			if(val>1000000){
+				tc += (val - 1000000) * 0.01;
+				val -= 1000000;
+			}
+			
+			if(val>600000 && val<=1000000){
+				tc += (val - 600000) * 0.015;
+				val -= 600000;
+			}
+			
+			if(val>400000 && val<=600000){
+				tc += (val - 400000) * 0.03;
+				val -= 400000;
+			}
+			
+			if(val>200000 && val<=400000){
+				tc += (val - 200000) * 0.05;
+				val -= 200000;
+			}
+			
+			if(val>100000 && val<=200000){
+				tc += (val - 100000) * 0.075;
+				val -= 100000;
+			}
+			
+			if(val>0 && val<=100000){
+				tc += val * 0.1;
+			}
+		
+			result_p.textContent = tc + "元";
+		}
+	</script>
+</html>
